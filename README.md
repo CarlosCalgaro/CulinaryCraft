@@ -22,3 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+Used endpoints:
+
+* https://www.themealdb.com/api/json/v1/1/categories.php
+* https://www.themealdb.com/api/json/v1/1/filter.php?c={category}
+* https://www.themealdb.com/api/json/v1/1/lookup.php?i={recipe_id}

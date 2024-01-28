@@ -1,0 +1,23 @@
+require: rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/schema.rb'
+    - 'vendor/**/*'
+    - 'config/routes/**/*'
+    - 'config/locales/**/*'
+    - 'config/initializers/**/*'
+    - 'config/application.rb'
+
+Metrics/LineLength:
+  Max: 120
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Security/Eval:
+  Enabled: true
