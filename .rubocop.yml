@@ -3,14 +3,16 @@ require: rubocop-rails
 AllCops:
   NewCops: enable
   Exclude:
+    - 'bin/*'
     - 'db/schema.rb'
     - 'vendor/**/*'
     - 'config/routes/**/*'
     - 'config/locales/**/*'
     - 'config/initializers/**/*'
     - 'config/application.rb'
+    - 'config/puma.rb'
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 
 Style/FrozenStringLiteralComment:
@@ -21,3 +23,9 @@ Style/StringLiterals:
 
 Security/Eval:
   Enabled: true
+
+Style/GlobalStdStream:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
