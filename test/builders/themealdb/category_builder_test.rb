@@ -19,7 +19,7 @@ class Themealdb::CategoryBuilderTest < ActiveSupport::TestCase
   test 'it converts the attributes using the ATTRIBUTES_MAP constant' do
     categories = Themealdb::CategoryBuilder.from_array(@categories_response)
     converted_keys = categories[0].attributes.symbolize_keys.keys
-    expected_keys = Themealdb::Mappers::Categories::ATTRIBUTES_MAP.keys
+    expected_keys = Themealdb::CategoryBuilder::ATTRIBUTES_MAP.keys
     assert_equal expected_keys.sort, converted_keys.sort
   end
 
