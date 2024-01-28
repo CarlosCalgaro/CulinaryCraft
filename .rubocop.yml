@@ -29,3 +29,9 @@ Style/GlobalStdStream:
 
 Style/Documentation:
   Enabled: false
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Lint/EmptyFile:
+  Enabled: false
