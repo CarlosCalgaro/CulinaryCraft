@@ -35,3 +35,9 @@ Style/SymbolArray:
 
 Lint/EmptyFile:
   Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
