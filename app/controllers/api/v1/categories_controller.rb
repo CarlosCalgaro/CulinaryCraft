@@ -1,7 +1,9 @@
 module Api
   module V1
     class CategoriesController < BaseController
-      def index; end
+      def index
+        @categories = Categories::FindAllService.call
+      end
     end
   end
 end
