@@ -8,24 +8,23 @@ class Categories::FindAllServiceTest < ActiveSupport::TestCase
       strCategoryThumb: @category.thumbnail,
       strCategoryDescription: @category.description
     }]
-    @mock = Minitest::Mock.new
-    @mock.expect :categories, @categories_response
   end
 
-  test 'it fetches all categories' do
-    Themealdb::Client::Categories.stub :new, @mock do
-      categories = Categories::FindAllService.call
-      expected = [@category]
-      assert_equal(categories.count, @categories_response.count)
-      assert_equal(expected, categories)
-    end
-  end
+  test 'calls fetches categories and build categories array' do
+    client_mock = Minitest::Mock.new
+    client_mock.expect(:categories, @categories_response)
 
-  test 'it returns an array of Category objects' do
-    Themealdb::Client::Categories.stub :new, @mock do
-      categories = Categories::FindAllService.call
-      assert_instance_of Array, categories
-      assert_instance_of Category, categories.first
+    Themealdb::Client::Categories.stub(:new, client_mock) do
+      Themealdb::CategoryBuilder.stub(:from_array, [@category]) do
+        result = Categories::FindAllService.call
+
+        assert_instance_of(Array, result)
+        category = result.first
+        assert_equal @category.id, category.id
+        assert_equal @category.name, category.name
+      end
     end
+
+    client_mock.verify
   end
 end
