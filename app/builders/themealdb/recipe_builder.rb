@@ -1,5 +1,4 @@
 class Themealdb::RecipeBuilder
-  
   ATTRIBUTES_MAP = {
     id: :idMeal,
     name: :strMeal,
@@ -19,11 +18,15 @@ class Themealdb::RecipeBuilder
   INGREDIENTS_REGEX = /str(?:Ingredient|Measure)(\d+)/
 
   def self.from_array(recipes:)
+    return nil if recipes.nil?
+
     recipe_builder = Themealdb::RecipeBuilder.new
     recipes.map { |recipe| recipe_builder.build_recipe(recipe) }
   end
 
   def self.from_hash(recipe:)
+    return nil if recipe.nil?
+
     recipe_builder = Themealdb::RecipeBuilder.new
     recipe_builder.build_recipe(recipe)
   end
