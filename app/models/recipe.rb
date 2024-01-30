@@ -1,14 +1,18 @@
 class Recipe
   include ActiveModel::API
 
-  attr_accessor :id, :name, :thumbnail
+  ATTRIBUTES = [:id, :name, :thumbnail, :instructions, :drink_alternate, :area, :tags,
+                :source, :image_source, :creative_commons_confirmed, :updated_at, :ingredients,
+                :youtube_url, :category].freeze
+
+  attr_accessor  *ATTRIBUTES
 
   def attributes
-    {
-      'id' => @id,
-      'name' => @name,
-      'thumbnail' => @thumbnail
-    }
+    atts = {}
+    ATTRIBUTES.each do |attr|
+      atts[attr.to_s] = public_send(attr)
+    end
+    atts
   end
 
   def ==(other)
