@@ -1,9 +1,9 @@
-module Api
-  module V1
-    class RecipesController < BaseController
-      def index; end
+class Api::V1::RecipesController < BaseController
+  def show
+    @recipe = Recipes::FindService.call(id: params[:id])
+  end
 
-      def show; end
-    end
+  def by_category
+    @recipes = Recipes::FindByCategoryService.call(category: params[:category])
   end
 end
