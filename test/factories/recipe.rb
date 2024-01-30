@@ -12,7 +12,7 @@ FactoryBot.define do
     youtube_url { Faker::Internet.url }
     name { Faker::Lorem.word }
     thumbnail { Faker::Internet.url }
-    description { Faker::Lorem.sentence }
+    instructions { Faker::Lorem.sentence }
 
     skip_create
     initialize_with { new(attributes) }
