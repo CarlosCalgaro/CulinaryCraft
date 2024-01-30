@@ -18,7 +18,7 @@ class Themealdb::RecipeBuilder
   INGREDIENTS_REGEX = /str(?:Ingredient|Measure)(\d+)/
 
   def self.from_array(recipes:)
-    return nil if recipes.nil?
+    return [] if recipes.nil?
 
     recipe_builder = Themealdb::RecipeBuilder.new
     recipes.map { |recipe| recipe_builder.build_recipe(recipe) }

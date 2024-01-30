@@ -1,1 +1,1 @@
-json.categories(@recipes, :id, :name, :thumbnail)
+json.recipes(@recipes, :id, :name, :thumbnail)
