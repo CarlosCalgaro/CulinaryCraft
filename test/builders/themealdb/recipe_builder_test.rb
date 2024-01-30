@@ -24,7 +24,7 @@ class Themealdb::RecipeBuilderTest < ActiveSupport::TestCase
     ]
   end
 
-  test "from_array builds recipes from an array of receipts" do
+  test "from_array builds recipes from an array of recipes" do
     recipes = Themealdb::RecipeBuilder.from_array(recipes: @recipe_data)
 
     assert_instance_of Array, recipes
