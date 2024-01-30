@@ -5,7 +5,7 @@ class Recipes::FindByCategoryService < ApplicationService
 
   def call
     recipes = client.recipes_by_category(category: @category)
-    Themealdb::RecipeBuilder.from_array(recipes)
+    Themealdb::RecipeBuilder.from_array(recipes: recipes)
   end
 
   private
