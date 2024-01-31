@@ -3,4 +3,9 @@ class Themealdb::Client::Recipes < Themealdb::Http
     response = get(url: 'filter.php', params: { c: category }).body
     response[:meals]
   end
+
+  def recipe(id:)
+    response = get(url: 'lookup.php', params: { i: id }).body
+    response[:meals].empty? ? nil : response[:meals].first
+  end
 end

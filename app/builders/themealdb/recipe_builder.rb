@@ -9,9 +9,9 @@ class Themealdb::RecipeBuilder
     area: :strArea,
     tags: :strTags,
     youtube_url: :strYoutube,
-    source: :strSource, 
-    image_source: :strImageSource, 
-    creative_commons_confirmed: :strCreativeCommonsConfirmed, 
+    source: :strSource,
+    image_source: :strImageSource,
+    creative_commons_confirmed: :strCreativeCommonsConfirmed,
     updated_at: :dateModified
   }.freeze
 
@@ -37,7 +37,7 @@ class Themealdb::RecipeBuilder
     Recipe.new(attributes.merge(ingredients: ingredients))
   end
 
-  private 
+  private
 
   def extract_attributes(recipe_data)
     attributes = {}
@@ -52,13 +52,11 @@ class Themealdb::RecipeBuilder
   end
 
   def build_ingredients(recipe_data)
-    ingredients = recipe_data.keys
-                              .group_by { |key| key[INGREDIENTS_REGEX, 1] }
-                              .reject { |key| key.nil? }
-                              .values
-                              .map { |ingredient_keys| build_ingredient(recipe_data, ingredient_keys) }
-                              .compact
-    ingredients
+    recipe_data.keys.group_by { |key| key[INGREDIENTS_REGEX, 1] unless key.nil?}
+               .reject{ |key| key.nil? }
+               .values
+               .map { |ingredient_keys| build_ingredient(recipe_data, ingredient_keys) }
+               .compact
   end
 
   def build_ingredient(recipe_data, ingredient_keys)

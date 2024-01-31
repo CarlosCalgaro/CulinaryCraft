@@ -20,11 +20,11 @@ class Themealdb::RecipeBuilderTest < ActiveSupport::TestCase
         strIngredient2: 'Ingredient 2',
         strMeasure2: 'Measure 2'
       }
-    
+
     ]
   end
 
-  test "from_array builds recipes from an array of recipes" do
+  test 'from_array builds recipes from an array of recipes' do
     recipes = Themealdb::RecipeBuilder.from_array(recipes: @recipe_data)
 
     assert_instance_of Array, recipes
@@ -34,28 +34,28 @@ class Themealdb::RecipeBuilderTest < ActiveSupport::TestCase
     end
   end
 
-  test "from_hash builds recipe from hash" do
+  test 'from_hash builds recipe from hash' do
     recipe = @recipe_builder.class.from_hash(recipe: @recipe_data.first)
 
     assert_instance_of Recipe, recipe
   end
 
-  test "build_recipe creates recipe object" do
+  test 'build_recipe creates recipe object' do
     recipe = @recipe_builder.build_recipe(@recipe_data.first)
 
     assert_instance_of Recipe, recipe
   end
 
-  test "extract_attributes returns attributes hash" do
-
+  test 'extract_attributes returns attributes hash' do
     recipe = Themealdb::RecipeBuilder.from_hash(recipe: @recipe_data.first)
     assert_equal 1, recipe.id
     assert_equal 'Meal 1', recipe.name
   end
 
-  test "build_ingredients builds ingredients from recipe" do
+  test 'build_ingredients builds ingredients from recipe' do
     recipe = Themealdb::RecipeBuilder.from_hash(recipe: @recipe_data.first)
     ingredients = recipe.ingredients
+
     assert_instance_of Array, ingredients
     assert_equal 2, ingredients.length
 

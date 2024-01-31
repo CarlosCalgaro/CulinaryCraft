@@ -7,10 +7,10 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :recipes, only: [:show] do
-        get :by_category, on: :collection
+      resources :recipes, only: [:show]
+      resources :categories, only: [:index] do
+        get :recipes, on: :member
       end
-      resources :categories, only: [:index]
     end
   end
 end
