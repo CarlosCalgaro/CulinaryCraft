@@ -13,7 +13,7 @@ class Themealdb::CategoryBuilder
 
   def build_category(category)
     Category.new(
-      id: category[ATTRIBUTES_MAP[:id]],
+      id: category[ATTRIBUTES_MAP[:id]].to_i,
       name: category[ATTRIBUTES_MAP[:name]],
       description: category[ATTRIBUTES_MAP[:description]],
       thumbnail: category[ATTRIBUTES_MAP[:thumbnail]]

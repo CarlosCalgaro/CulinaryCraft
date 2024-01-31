@@ -6,6 +6,6 @@ class Themealdb::Client::Recipes < Themealdb::Http
 
   def recipe(id:)
     response = get(url: 'lookup.php', params: { i: id }).body
-    response[:meals].empty? ? nil : response[:meals].first
+    response[:meals]&.first
   end
 end

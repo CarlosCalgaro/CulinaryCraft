@@ -1,1 +1,3 @@
-json.recipe(@recipe, *Recipe::ATTRIBUTES).compact
+json.recipe do
+  json.(@recipe, *Recipe::ATTRIBUTES) unless @recipe.nil?
+end
